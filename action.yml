@@ -1,19 +1,28 @@
 name: 'Install The Hive Skill'
 description: 'Installs The Hive Skill into your agentic coding environment.'
+author: 'yuzuruu29'
+
+branding:
+  icon: 'users'
+  color: 'purple'
+
 inputs:
   install-path:
     description: 'Path where the skill will be installed'
     required: false
     default: '.agents/skills/hive-mind-council'
+
 runs:
   using: 'composite'
   steps:
     - name: Create install directory
-      run: mkdir -p ${{ inputs.install-path }}
+      run: mkdir -p "${{ inputs.install-path }}"
       shell: bash
+
     - name: Copy skill files
-      run: cp -r skills/hive-mind-council/* ${{ inputs.install-path }}/
+      run: cp -r "$GITHUB_ACTION_PATH/skills/hive-mind-council/"* "${{ inputs.install-path }}/"
       shell: bash
+
     - name: Validate SKILL.md exists
       run: |
         if [ ! -f "${{ inputs.install-path }}/SKILL.md" ]; then
@@ -21,10 +30,15 @@ runs:
           exit 1
         fi
       shell: bash
+
     - name: Validate skill name in SKILL.md
       run: |
         if ! grep -q 'hive-mind-council' "${{ inputs.install-path }}/SKILL.md"; then
           echo "Error: Skill name 'hive-mind-council' not found in SKILL.md"
           exit 1
         fi
+      shell: bash
+
+    - name: Confirm installation
+      run: echo "The Hive Skill installed successfully to ${{ inputs.install-path }}"
       shell: bash
