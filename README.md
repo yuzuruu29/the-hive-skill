@@ -20,30 +20,23 @@ The Hive Skill turns one AI coding agent into a six-role autonomous dev council:
 
 ## Installation
 
-You can install The Hive Skill using the provided installation scripts or via GitHub Actions.
+### 🔗 Marketplace
 
-### Manual Installation
-Run the install script for your platform:
-
-**Bash (Linux/macOS):**
 ```bash
-./install.sh
+/plugin marketplace add yuzuruu29/the-hive-skill
+/plugin install hive-mind-council@the-hive-skill
 ```
 
-**PowerShell (Windows):**
-```powershell
-.\install.ps1
+### npx skills
+
+```bash
+npx skills add git@github.com:yuzuruu29/the-hive-skill.git
 ```
 
-By default, the skill is installed to `.agents/skills/hive-mind-council/`. You can specify a different path: `.opencode/skills/hive-mind-council` or `.claude/skills/hive-mind-council`.
+Instead of ssh, if you prefer to use https:
 
-### GitHub Actions
-Use the composite action in your workflow:
-```yaml
-steps:
-  - uses: yuzuruu29/the-hive-skill@v0.1.0
-    with:
-      install-path: '.agents/skills/hive-mind-council'
+```bash
+npx skills add https://github.com/yuzuruu29/the-hive-skill.git
 ```
 
 ## Autonomous by Default
