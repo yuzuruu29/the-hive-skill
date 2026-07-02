@@ -6,6 +6,20 @@ The Hive Skill is built to be invoked once and trusted to continue until the tas
 
 v0.1.0 provides role-simulated orchestration inside compatible agentic coding tools. Real multi-model execution depends on the runtime.
 
+## Demo
+
+A demo animation source is available at:
+
+```text
+assets/demo/the-hive-skill-demo.html
+```
+
+Export instructions are available at:
+
+```text
+assets/demo/export-instructions.md
+```
+
 ## Supported Runtimes
 - OpenCode / OpenCode Go
 - Claude Code
