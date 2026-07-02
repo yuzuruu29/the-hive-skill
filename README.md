@@ -8,17 +8,9 @@ v0.1.0 provides role-simulated orchestration inside compatible agentic coding to
 
 ## Demo
 
-A demo animation source is available at:
+![The Hive Skill demo](assets/demo/the-hive-skill-demo.gif)
 
-```text
-assets/demo/the-hive-skill-demo.html
-```
-
-Export instructions are available at:
-
-```text
-assets/demo/export-instructions.md
-```
+The Hive Skill turns one AI coding agent into a six-role autonomous dev council: Queen, Scout, Architect, Forger, Sentinel, and Scribe.
 
 ## Supported Runtimes
 - OpenCode / OpenCode Go
