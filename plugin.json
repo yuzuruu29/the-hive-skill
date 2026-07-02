@@ -1,0 +1,12 @@
+{
+  "name": "hive-mind-council",
+  "displayName": "The Hive Skill",
+  "description": "Open-source autonomous multi-agent orchestration skill for agentic coders.",
+  "version": "0.1.0",
+  "author": "Emmanuel Uzziel Malolos",
+  "github": "https://github.com/yuzuruu29/the-hive-skill",
+  "license": "Apache-2.0",
+  "tags": [
+    "agentic-coding", "multi-agent", "orchestration", "opencode", "opencode-go", "claude-code", "codex", "skill-md", "hivemind"
+  ]
+}
