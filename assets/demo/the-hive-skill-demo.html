@@ -8,11 +8,12 @@
     margin: 0; padding: 0; width: 100%; height: 100%;
     background-color: #0F111A; color: #E2E8F0;
     font-family: 'Consolas', 'Courier New', monospace;
+    -webkit-font-smoothing: antialiased;
     overflow: hidden;
     display: flex; justify-content: center; align-items: center;
   }
   .container {
-    width: 960px; height: 540px;
+    width: 1200px; height: 675px;
     position: relative;
     background: #141724;
     border-radius: 8px;
@@ -27,8 +28,8 @@
   }
   
   /* Shared text styling */
-  h1 { font-size: 28px; font-weight: normal; margin-bottom: 20px; }
-  p { font-size: 20px; line-height: 1.6; text-align: center; color: #94A3B8; margin: 0; }
+  h1 { font-size: 38px; font-weight: normal; margin-bottom: 24px; }
+  p { font-size: 26px; line-height: 1.6; text-align: center; color: #94A3B8; margin: 0; }
   .accent { color: #8A2BE2; }
   .warning { color: #F59E0B; }
   .success { color: #4ADE80; }
@@ -57,8 +58,8 @@
     26.6%, 59% { opacity: 1; }
     60%, 100% { opacity: 0; }
   }
-  .role-list { text-align: left; font-size: 22px; width: 560px; margin-top: 20px; }
-  .role-item { margin: 12px 0; opacity: 0; }
+  .role-list { text-align: left; font-size: 28px; width: 720px; margin-top: 20px; }
+  .role-item { margin: 16px 0; opacity: 0; }
 
   /* Fix scene 3 items */
   @keyframes item1 { 0%, 30% { opacity: 0; transform: translateX(-10px); } 31%, 60% { opacity: 1; transform: translateX(0); } 61%, 100% { opacity: 0; } }
@@ -75,7 +76,7 @@
   .i6 { animation: item6 15s infinite; }
 
   /* Scene 4: 9-13s (60-86.6%) */
-  .scene-4 { animation: s4 15s infinite; align-items: flex-start; padding: 40px; justify-content: flex-start; }
+  .scene-4 { animation: s4 15s infinite; align-items: flex-start; padding: 60px; justify-content: flex-start; }
   @keyframes s4 {
     0%, 59.9% { opacity: 0; }
     60%, 85.5% { opacity: 1; }
@@ -92,15 +93,15 @@
 
   /* Terminal Window Decoration */
   .terminal-header {
-    height: 30px; background: #2B3045; width: 100%; position: absolute; top: 0; left: 0;
-    display: flex; align-items: center; padding: 0 10px; box-sizing: border-box;
+    height: 36px; background: #2B3045; width: 100%; position: absolute; top: 0; left: 0;
+    display: flex; align-items: center; padding: 0 12px; box-sizing: border-box;
   }
-  .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; margin-right: 10px; }
   .dot.red { background: #FF5F56; }
   .dot.yellow { background: #FFBD2E; }
   .dot.green { background: #27C93F; }
 
-  .content { padding-top: 50px; width: 100%; box-sizing: border-box; font-size: 20px; line-height: 1.8; }
+  .content { padding-top: 60px; width: 100%; box-sizing: border-box; font-size: 26px; line-height: 1.8; }
 </style>
 </head>
 <body>
