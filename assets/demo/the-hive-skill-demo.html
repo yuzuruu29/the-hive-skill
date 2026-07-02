@@ -21,77 +21,6 @@
     border: 1px solid #2B3045;
     overflow: hidden;
   }
-  .scene {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    opacity: 0;
-  }
-  
-  /* Shared text styling */
-  h1 { font-size: 38px; font-weight: normal; margin-bottom: 24px; }
-  p { font-size: 26px; line-height: 1.6; text-align: center; color: #94A3B8; margin: 0; }
-  .accent { color: #8A2BE2; }
-  .warning { color: #F59E0B; }
-  .success { color: #4ADE80; }
-  .blue { color: #00BFFF; }
-
-  /* Animations for 15s loop */
-  /* Scene 1: 0-2s (0-13.3%) */
-  .scene-1 { animation: s1 15s infinite; }
-  @keyframes s1 {
-    0%, 12% { opacity: 1; }
-    13.3%, 100% { opacity: 0; }
-  }
-
-  /* Scene 2: 2-4s (13.3-26.6%) */
-  .scene-2 { animation: s2 15s infinite; align-items: flex-start; padding: 40px; justify-content: flex-start; }
-  @keyframes s2 {
-    0%, 13.2% { opacity: 0; }
-    13.3%, 25.5% { opacity: 1; }
-    26.6%, 100% { opacity: 0; }
-  }
-
-  /* Scene 3: 4-9s (26.6-60%) */
-  .scene-3 { animation: s3 15s infinite; }
-  @keyframes s3 {
-    0%, 26.5% { opacity: 0; }
-    26.6%, 59% { opacity: 1; }
-    60%, 100% { opacity: 0; }
-  }
-  .role-list { text-align: left; font-size: 28px; width: 720px; margin-top: 20px; }
-  .role-item { margin: 16px 0; opacity: 0; }
-
-  /* Fix scene 3 items */
-  @keyframes item1 { 0%, 30% { opacity: 0; transform: translateX(-10px); } 31%, 60% { opacity: 1; transform: translateX(0); } 61%, 100% { opacity: 0; } }
-  @keyframes item2 { 0%, 34% { opacity: 0; transform: translateX(-10px); } 35%, 60% { opacity: 1; transform: translateX(0); } 61%, 100% { opacity: 0; } }
-  @keyframes item3 { 0%, 38% { opacity: 0; transform: translateX(-10px); } 39%, 60% { opacity: 1; transform: translateX(0); } 61%, 100% { opacity: 0; } }
-  @keyframes item4 { 0%, 42% { opacity: 0; transform: translateX(-10px); } 43%, 60% { opacity: 1; transform: translateX(0); } 61%, 100% { opacity: 0; } }
-  @keyframes item5 { 0%, 46% { opacity: 0; transform: translateX(-10px); } 47%, 60% { opacity: 1; transform: translateX(0); } 61%, 100% { opacity: 0; } }
-  @keyframes item6 { 0%, 50% { opacity: 0; transform: translateX(-10px); } 51%, 60% { opacity: 1; transform: translateX(0); } 61%, 100% { opacity: 0; } }
-  .i1 { animation: item1 15s infinite; }
-  .i2 { animation: item2 15s infinite; }
-  .i3 { animation: item3 15s infinite; }
-  .i4 { animation: item4 15s infinite; }
-  .i5 { animation: item5 15s infinite; }
-  .i6 { animation: item6 15s infinite; }
-
-  /* Scene 4: 9-13s (60-86.6%) */
-  .scene-4 { animation: s4 15s infinite; align-items: flex-start; padding: 60px; justify-content: flex-start; }
-  @keyframes s4 {
-    0%, 59.9% { opacity: 0; }
-    60%, 85.5% { opacity: 1; }
-    86.6%, 100% { opacity: 0; }
-  }
-
-  /* Scene 5: 13-15s (86.6-100%) */
-  .scene-5 { animation: s5 15s infinite; }
-  @keyframes s5 {
-    0%, 86.5% { opacity: 0; }
-    86.6%, 99% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-
-  /* Terminal Window Decoration */
   .terminal-header {
     height: 36px; background: #2B3045; width: 100%; position: absolute; top: 0; left: 0;
     display: flex; align-items: center; padding: 0 12px; box-sizing: border-box;
@@ -100,73 +29,114 @@
   .dot.red { background: #FF5F56; }
   .dot.yellow { background: #FFBD2E; }
   .dot.green { background: #27C93F; }
-
-  .content { padding-top: 60px; width: 100%; box-sizing: border-box; font-size: 26px; line-height: 1.8; }
+  .content { padding: 50px 30px 30px; font-size: 26px; line-height: 1.6; }
+  .line { margin: 6px 0; }
+  .prompt { color: #4ADE80; font-weight: bold; margin-right: 10px; }
+  .role-queen { color: #E879F9; }
+  .role-scout { color: #60A5FA; }
+  .role-architect { color: #FBBF24; }
+  .role-forger { color: #34D399; }
+  .role-sentinel { color: #F87171; }
+  .role-scribe { color: #94A3B8; }
+  .cursor {
+    display: inline-block;
+    width: 12px;
+    height: 24px;
+    background-color: #E2E8F0;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 </style>
 </head>
 <body>
 <div class="container">
   <div class="terminal-header">
-    <div class="dot red"></div>
-    <div class="dot yellow"></div>
-    <div class="dot green"></div>
+    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
   </div>
-
-  <!-- Scene 1 -->
-  <div class="scene scene-1">
-    <h1><span class="warning">Problem:</span> AI coding agents often do everything in one messy pass.</h1>
-    <p>Plan &rarr; Code &rarr; Skip validation &rarr; Vague summary</p>
-  </div>
-
-  <!-- Scene 2 -->
-  <div class="scene scene-2">
-    <div class="content">
-      <p style="text-align: left; color: #E2E8F0;">
-        <span class="success">&gt;</span> Use <span class="blue">The Hive Skill</span> to fix the failing login flow.
-      </p>
-      <br>
-      <p style="text-align: left; color: #94A3B8;">
-        The Hive Skill activated.
-      </p>
-    </div>
-  </div>
-
-  <!-- Scene 3 -->
-  <div class="scene scene-3">
-    <h1><span class="blue">Six-role AI coding council</span> • <span class="accent">Autonomous loop</span></h1>
-    <div class="role-list">
-      <div class="role-item i1"><span class="accent">Queen</span>      &rarr; defines goal</div>
-      <div class="role-item i2"><span class="blue">Scout</span>      &rarr; inspects repo</div>
-      <div class="role-item i3"><span class="warning">Architect</span>  &rarr; plans smallest safe fix</div>
-      <div class="role-item i4"><span class="success">Forger</span>     &rarr; implements changes</div>
-      <div class="role-item i5"><span class="accent">Sentinel</span>   &rarr; validates result</div>
-      <div class="role-item i6"><span style="color:#A78BFA">Scribe</span>     &rarr; writes final report</div>
-    </div>
-  </div>
-
-  <!-- Scene 4 -->
-  <div class="scene scene-4">
-    <div class="content">
-      <p style="text-align: left; color: #E2E8F0;">The Hive Skill completed the task.</p>
-      <br>
-      <p style="text-align: left; color: #94A3B8;">Validation:</p>
-      <p style="text-align: left; color: #4ADE80;">✓ Tests checked</p>
-      <p style="text-align: left; color: #4ADE80;">✓ Changes reviewed</p>
-      <p style="text-align: left; color: #4ADE80;">✓ Known issues disclosed</p>
-      <br>
-      <p style="text-align: left; color: #94A3B8;">Queen Final Decision:</p>
-      <p style="text-align: left; color: #00BFFF;">Complete.</p>
-    </div>
-  </div>
-
-  <!-- Scene 5 -->
-  <div class="scene scene-5">
-    <h1 style="color: #00BFFF;">github.com/yuzuruu29/the-hive-skill</h1>
-    <p>Open-source SKILL.md • Token efficient</p>
-    <br>
-    <p style="font-size:16px; color: #94A3B8;">OpenCode • Claude Code • Codex</p>
-  </div>
-
+  <div class="content" id="terminal"></div>
 </div>
+<script>
+  const term = document.getElementById('terminal');
+  let cursor = document.createElement('span');
+  cursor.className = 'cursor';
+
+  async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+  
+  async function typeText(lineElem, text, speed = 30) {
+    for (let char of text) {
+      lineElem.textContent += char;
+      await sleep(speed);
+    }
+  }
+
+  async function addPromptLine(cmdText) {
+    const line = document.createElement('div');
+    line.className = 'line';
+    const prompt = document.createElement('span');
+    prompt.className = 'prompt';
+    prompt.textContent = '>';
+    const cmd = document.createElement('span');
+    line.appendChild(prompt);
+    line.appendChild(cmd);
+    term.appendChild(line);
+    line.appendChild(cursor);
+    await sleep(400);
+    await typeText(cmd, cmdText, 25);
+    await sleep(200);
+    line.removeChild(cursor);
+  }
+
+  function addOutputLine(htmlContent) {
+    const line = document.createElement('div');
+    line.className = 'line';
+    line.innerHTML = htmlContent;
+    term.appendChild(line);
+  }
+
+  async function runDemo() {
+    term.appendChild(cursor);
+    await sleep(500);
+    term.removeChild(cursor);
+
+    await addPromptLine(' /plugin marketplace add yuzuruu29/the-hive-skill');
+    addOutputLine('<span style="color: #94A3B8;">[Marketplace] Added registry yuzuruu29/the-hive-skill</span>');
+    term.appendChild(cursor);
+    await sleep(800);
+    term.removeChild(cursor);
+
+    await addPromptLine(' /plugin install hive-mind-council@the-hive-skill');
+    addOutputLine('<span style="color: #94A3B8;">[Plugin] Installed hive-mind-council successfully.</span>');
+    term.appendChild(cursor);
+    await sleep(1000);
+    term.removeChild(cursor);
+    
+    addOutputLine('<br>');
+
+    await addPromptLine(' /hive-mind-council fix the login bug');
+    term.appendChild(cursor);
+    await sleep(600);
+    
+    addOutputLine('<span class="role-queen">[Queen]</span> Goal defined: Fix login bug. Success criteria: tests pass.');
+    await sleep(1000);
+    
+    addOutputLine('<span class="role-scout">[Scout]</span> Inspected auth.ts and session.ts. Found missing token validation.');
+    await sleep(1000);
+    
+    addOutputLine('<span class="role-architect">[Architect]</span> Plan: Add JWT verification step in auth.ts.');
+    await sleep(1000);
+    
+    addOutputLine('<span class="role-forger">[Forger]</span> Implemented JWT verification logic.');
+    await sleep(1000);
+    
+    addOutputLine('<span class="role-sentinel">[Sentinel]</span> Validated changes. All tests passing.');
+    await sleep(1000);
+    
+    addOutputLine('<span class="role-scribe">[Scribe]</span> Bug fixed. Queen Final Decision: Complete.');
+    term.appendChild(cursor);
+  }
+  
+  runDemo();
+</script>
 </body>
 </html>
