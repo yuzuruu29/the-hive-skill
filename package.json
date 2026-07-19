@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "description": "The Hive Skill - multi-agent orchestration protocol",
+  "scripts": {
+    "test": "node tests/run-all.js",
+    "test:contracts": "node tests/contracts/handoff-schema.test.js",
+    "test:templates": "node tests/contracts/yaml-templates.test.js",
+    "test:presets": "node tests/scenarios/preset-selection.test.js",
+    "test:safety": "node tests/scenarios/safety-validation.test.js",
+    "test:ci": "node tests/run-ci.js",
+    "validate:json": "node -e \"const fs=require('fs');require('path');['package.json','skill.json','plugin.json'].forEach(f=>{try{JSON.parse(fs.readFileSync(f,'utf8'));console.log('OK: '+f)}catch(e){console.error('FAIL: '+f);process.exit(1)}})\"",
+    "validate:links": "node tests/validate-links.js"
+  }
+}

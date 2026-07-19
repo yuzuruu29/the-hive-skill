@@ -1,0 +1,108 @@
+1
+00:00:00,050 --> 00:00:01,923
+One request can generate code.
+
+2
+00:00:01,923 --> 00:00:04,375
+Engineering needs a coordinated swarm.
+
+3
+00:00:04,375 --> 00:00:09,326
+HIVE — Hyper Intelligence for Verified Engineering — puts one Queen at the center.
+
+4
+00:00:09,326 --> 00:00:11,262
+Scout maps the repository.
+
+5
+00:00:11,262 --> 00:00:12,704
+Planner bounds the work.
+
+6
+00:00:12,704 --> 00:00:13,870
+Builders implement.
+
+7
+00:00:13,870 --> 00:00:15,192
+Validator tests.
+
+8
+00:00:15,192 --> 00:00:16,862
+Reviewer inspects risk.
+
+9
+00:00:16,862 --> 00:00:19,230
+Fixer repairs and revalidates.
+
+10
+00:00:19,230 --> 00:00:24,867
+In HIVE, TypeScript checking passes, while the latest test limitation remains disclosed.
+
+11
+00:00:24,867 --> 00:00:29,170
+Pledgr passes 165 tests across 21 files.
+
+12
+00:00:29,170 --> 00:00:35,649
+TraderBot passes 40 tests across four safety-gated modules, with live trading disabled by default.
+
+13
+00:00:35,649 --> 00:00:40,540
+Every claim links to a command, repository file, or captured interface.
+
+14
+00:00:40,540 --> 00:00:42,067
+Success is sourced.
+
+15
+00:00:42,067 --> 00:00:43,617
+Failures stay visible.
+
+16
+00:00:43,617 --> 00:00:44,975
+Limits are disclosed.
+
+17
+00:00:44,975 --> 00:00:45,925
+One Queen.
+
+18
+00:00:45,925 --> 00:00:47,367
+Specialized agents.
+
+19
+00:00:47,367 --> 00:00:48,954
+Evidence-backed engineering.
+
+20
+00:00:48,954 --> 00:00:49,651
+Plan.
+
+21
+00:00:49,651 --> 00:00:50,324
+Build.
+
+22
+00:00:50,324 --> 00:00:51,105
+Test.
+
+23
+00:00:51,105 --> 00:00:51,887
+Review.
+
+24
+00:00:51,887 --> 00:00:52,668
+Fix.
+
+25
+00:00:52,668 --> 00:00:53,689
+Revalidate.
+
+26
+00:00:53,689 --> 00:00:54,483
+Report.
+
+27
+00:00:54,483 --> 00:00:59,579
+Explore HIVE at github dot com slash yuzuruu twenty-nine slash the-hive-skill.
+

@@ -1,0 +1,34 @@
+{
+  "name": "hive-promotional-video",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "capture": "node scripts/capture-projects.mjs",
+    "evidence": "node scripts/collect-evidence.mjs",
+    "audio": "node scripts/generate-audio.mjs",
+    "render:master": "remotion render src/index.ts HivePromoMaster dist/hive-promo-master-16x9.mp4 --codec=h264 --crf=18 --audio-codec=aac",
+    "render:social": "remotion render src/index.ts HivePromoVertical dist/hive-promo-social-9x16.mp4 --codec=h264 --crf=18 --audio-codec=aac",
+    "render:square": "remotion render src/index.ts HivePromoSquare dist/hive-promo-square-1x1.mp4 --codec=h264 --crf=18 --audio-codec=aac",
+    "render:muted": "remotion render src/index.ts HivePromoMasterMuted dist/hive-promo-master-muted.mp4 --codec=h264 --crf=18 && remotion render src/index.ts HivePromoVerticalMuted dist/hive-promo-social-muted.mp4 --codec=h264 --crf=18",
+    "render:stills": "remotion still src/index.ts HivePromoPoster dist/hive-promo-poster.png && remotion still src/index.ts HivePromoThumbnail dist/hive-promo-thumbnail.png",
+    "render:all": "node scripts/render-all.mjs",
+    "verify:safety": "node scripts/verify-safety.mjs",
+    "verify": "node scripts/verify-captions.mjs && node scripts/verify-safety.mjs && node scripts/verify-media.mjs"
+  },
+  "dependencies": {
+    "@remotion/captions": "4.0.484",
+    "@remotion/cli": "4.0.484",
+    "@remotion/media": "4.0.484",
+    "@types/node": "^22.19.0",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "playwright": "^1.61.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.484",
+    "typescript": "5.9.3"
+  }
+}

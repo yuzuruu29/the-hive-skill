@@ -20,7 +20,8 @@ runs:
       shell: bash
 
     - name: Copy skill files
-      run: cp -r "$GITHUB_ACTION_PATH/skills/hive-mind-council/"* "${{ inputs.install-path }}/"
+      run: |
+        cp -r "$GITHUB_ACTION_PATH/skills/hive-mind-council/"* "${{ inputs.install-path }}/"
       shell: bash
 
     - name: Validate SKILL.md exists
@@ -39,6 +40,44 @@ runs:
         fi
       shell: bash
 
+    - name: Validate reference files
+      run: |
+        required_refs="council-protocol.md role-contracts.md handoff-schema.md orchestration-presets.md verification-policy.md safety-policy.md"
+        for ref in $required_refs; do
+          if [ ! -f "${{ inputs.install-path }}/references/$ref" ]; then
+            echo "Error: Reference file $ref not found"
+            exit 1
+          fi
+        done
+        echo "All 6 reference files present"
+      shell: bash
+
+    - name: Validate agent files
+      run: |
+        required_agents="Queen.md Scout.md Architect.md Forger.md Sentinel.md Scribe.md"
+        for agent in $required_agents; do
+          if [ ! -f "${{ inputs.install-path }}/agents/$agent" ]; then
+            echo "Error: Agent file $agent not found"
+            exit 1
+          fi
+        done
+        echo "All 6 agent files present"
+      shell: bash
+
+    - name: Validate templates
+      run: |
+        required_templates="council-loop.md final-report.md validation-report.md run-contract.yaml role-handoff.yaml evidence-ledger.yaml final-review.yaml"
+        for tmpl in $required_templates; do
+          if [ ! -f "${{ inputs.install-path }}/templates/$tmpl" ]; then
+            echo "Error: Template file $tmpl not found"
+            exit 1
+          fi
+        done
+        echo "All 7 template files present"
+      shell: bash
+
     - name: Confirm installation
-      run: echo "The Hive Skill installed successfully to ${{ inputs.install-path }}"
+      run: |
+        file_count=$(find "${{ inputs.install-path }}" -type f | wc -l)
+        echo "The Hive Skill installed successfully to ${{ inputs.install-path }} ($file_count files)"
       shell: bash

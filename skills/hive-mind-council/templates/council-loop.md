@@ -1,42 +1,45 @@
 # Council Loop
 
+The council loop is driven by the orchestration presets defined in [orchestration-presets.md](../references/orchestration-presets.md).
+
+## Loop Structure
+
 ```
 LOOP START
-[Queen]
-- Restate the goal in one sentence.
-- Define success criteria.
-- Decide whether the task requires code changes, documentation changes, tests, or research.
-[Scout]
-- Inspect only the files needed for the current task.
-- Summarize relevant findings.
-- Avoid reading unrelated files.
-[Architect]
-- Create the smallest viable plan.
-- Prefer modifying existing files over creating new systems.
-- Define acceptance criteria.
-[Queen]
-- Approve, revise, or reject the plan.
-- If the plan is too large, reduce scope to the smallest useful version.
-[Forger]
-- Implement the approved plan.
-- Make focused edits.
-- Avoid unrelated refactors.
-[Sentinel]
-- Validate the change.
-- Run available tests, lint, typecheck, or targeted checks.
-- If checks fail, identify concrete fixes.
-IF Sentinel fails:
-  Return to Forger for fixes.
-  Then re-run Sentinel.
-IF Sentinel passes:
-  Continue to Scribe.
-[Scribe]
-- Summarize what changed.
-- List files changed.
-- Report validation results.
-- Disclose known issues.
-- Suggest commit message.
-[Queen]
-- Make final completion decision.
+[Queen] — Establish run contract, classify task, select preset
+[Scout]* — Gather context bundle
+[Architect]* — Produce executable plan with decision records
+[Queen] — Review plan, approve or adjust scope
+[Forger] — Implement with incremental checks
+[Sentinel] — Validate across applicable layers
+IF Sentinel fails AND fix cycles remain:
+  Return to Forger for targeted repair
+  Re-run Sentinel
+IF Sentinel passes OR fix cycles exhausted:
+  Continue to Scribe
+[Scribe] — Generate HIVE Review, synchronize docs
+[Queen] — Issue final decision
 LOOP END
 ```
+
+*Roles marked with `*` may be skipped by the Queen based on preset.
+
+## Bounded Repair Cycle
+
+```
+Repair Cycle (max: configured in preset)
+  1. Queen forwards Sentinel findings to Forger
+  2. Forger repairs only the specific failure
+  3. Sentinel re-validates
+  4. If still failing, increment cycle counter
+  5. If max cycles reached, Queen declares FAILED
+```
+
+## Evidence Checkpoints
+
+Every handoff must include:
+- Status (complete | blocked | failed | needs_approval)
+- Findings with evidence and confidence
+- Files examined and changed
+- Commands run and results
+- Risks and unresolved questions

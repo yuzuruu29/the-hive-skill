@@ -117,6 +117,16 @@ dist
 # TernJS port file
 .tern-port
 
+# Playwright
+playwright-report/
+test-results/
+
+# hive-ad Remotion project
+hive-ad/node_modules/
+hive-ad/out/
+hive-ad/dist/
+hive-ad/build/
+
 # Mac OS
 .DS_Store
 

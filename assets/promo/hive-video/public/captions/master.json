@@ -1,0 +1,191 @@
+[
+  {
+    "text": " One request can generate code.",
+    "startMs": 50,
+    "endMs": 1923,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Engineering needs a coordinated swarm.",
+    "startMs": 1923,
+    "endMs": 4375,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " HIVE — Hyper Intelligence for Verified Engineering — puts one Queen at the center.",
+    "startMs": 4375,
+    "endMs": 9326,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Scout maps the repository.",
+    "startMs": 9326,
+    "endMs": 11262,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Planner bounds the work.",
+    "startMs": 11262,
+    "endMs": 12704,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Builders implement.",
+    "startMs": 12704,
+    "endMs": 13870,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Validator tests.",
+    "startMs": 13870,
+    "endMs": 15192,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Reviewer inspects risk.",
+    "startMs": 15192,
+    "endMs": 16862,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Fixer repairs and revalidates.",
+    "startMs": 16862,
+    "endMs": 19230,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " In HIVE, TypeScript checking passes, while the latest test limitation remains disclosed.",
+    "startMs": 19230,
+    "endMs": 24867,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Pledgr passes 165 tests across 21 files.",
+    "startMs": 24867,
+    "endMs": 29170,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " TraderBot passes 40 tests across four safety-gated modules, with live trading disabled by default.",
+    "startMs": 29170,
+    "endMs": 35649,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Every claim links to a command, repository file, or captured interface.",
+    "startMs": 35649,
+    "endMs": 40540,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Success is sourced.",
+    "startMs": 40540,
+    "endMs": 42067,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Failures stay visible.",
+    "startMs": 42067,
+    "endMs": 43617,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Limits are disclosed.",
+    "startMs": 43617,
+    "endMs": 44975,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " One Queen.",
+    "startMs": 44975,
+    "endMs": 45925,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Specialized agents.",
+    "startMs": 45925,
+    "endMs": 47367,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Evidence-backed engineering.",
+    "startMs": 47367,
+    "endMs": 48954,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Plan.",
+    "startMs": 48954,
+    "endMs": 49651,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Build.",
+    "startMs": 49651,
+    "endMs": 50324,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Test.",
+    "startMs": 50324,
+    "endMs": 51105,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Review.",
+    "startMs": 51105,
+    "endMs": 51887,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Fix.",
+    "startMs": 51887,
+    "endMs": 52668,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Revalidate.",
+    "startMs": 52668,
+    "endMs": 53689,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Report.",
+    "startMs": 53689,
+    "endMs": 54483,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Explore HIVE at github dot com slash yuzuruu twenty-nine slash the-hive-skill.",
+    "startMs": 54483,
+    "endMs": 59579,
+    "timestampMs": null,
+    "confidence": null
+  }
+]

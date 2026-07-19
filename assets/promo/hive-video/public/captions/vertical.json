@@ -1,0 +1,93 @@
+[
+  {
+    "text": " One request.",
+    "startMs": 50,
+    "endMs": 1053,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " An engineering swarm.",
+    "startMs": 1053,
+    "endMs": 2395,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " HIVE puts one Queen at the center, coordinating Scout, Planner, Builders, Validator, Reviewer, and Fixer.",
+    "startMs": 2395,
+    "endMs": 9212,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " The workflow inspects, builds, tests, repairs, and reports.",
+    "startMs": 9212,
+    "endMs": 13553,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " HIVE TypeScript checking passes, with its latest test limitation disclosed.",
+    "startMs": 13553,
+    "endMs": 17928,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Pledgr passes 165 tests.",
+    "startMs": 17928,
+    "endMs": 20636,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " TraderBot passes 40 across four safety-gated modules, with live trading disabled by default.",
+    "startMs": 20636,
+    "endMs": 26574,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Success is sourced.",
+    "startMs": 26574,
+    "endMs": 28043,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Failures stay visible.",
+    "startMs": 28043,
+    "endMs": 29537,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " One Queen.",
+    "startMs": 29537,
+    "endMs": 30451,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Specialized agents.",
+    "startMs": 30451,
+    "endMs": 31840,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Evidence-backed engineering.",
+    "startMs": 31840,
+    "endMs": 33368,
+    "timestampMs": null,
+    "confidence": null
+  },
+  {
+    "text": " Find HIVE on GitHub at yuzuruu twenty-nine slash the-hive-skill.",
+    "startMs": 33368,
+    "endMs": 37233,
+    "timestampMs": null,
+    "confidence": null
+  }
+]

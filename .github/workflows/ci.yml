@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate all JSON files
+        run: |
+          echo "Validating JSON files..."
+          for f in $(find . -name '*.json' -not -path './hive-ad/*' -not -path './assets/promo/*' -not -path '*/node_modules/*'); do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" && echo "  OK: $f" || (echo "  FAIL: $f" && exit 1)
+          done
+
+      - name: Validate all Markdown links
+        run: |
+          echo "Checking markdown files exist..."
+          errors=0
+          for f in $(find . -name '*.md' -not -path './hive-ad/*' -not -path './assets/promo/*' -not -path '*/node_modules/*'); do
+            dir=$(dirname "$f")
+            # Extract relative links [text](path) — skip absolute URLs, fragments, mailto
+            for link in $(grep -oP '\[([^\]]+)\]\(([^)]+)\)' "$f" | grep -oP '\([^)]+\)' | tr -d '()'); do
+              case "$link" in
+                http*|mailto:*|'#'*|'./'*) ;;
+                *)
+                  target="$dir/$link"
+                  if [ ! -f "$target" ] && [ ! -d "$target" ]; then
+                    echo "  BROKEN: $f -> $link (target: $target)"
+                    errors=$((errors+1))
+                  fi
+                  ;;
+              esac
+            done
+          done
+          if [ "$errors" -gt 0 ]; then
+            echo "FAIL: $errors broken link(s) found"
+            exit 1
+          fi
+          echo "PASS: All links valid"
+
+      - name: Run contract and scenario tests
+        run: |
+          node tests/contracts/handoff-schema.test.js
+          node tests/contracts/yaml-templates.test.js
+          node tests/scenarios/preset-selection.test.js
+          node tests/scenarios/safety-validation.test.js
+
+      - name: Confirm no stale v0.1.0 references
+        run: |
+          if grep -rn "v0\.1\.0" --include="*.md" --include="*.json" . --exclude-dir=hive-ad --exclude-dir=assets/promo --exclude-dir=node_modules 2>/dev/null | grep -v "CHANGELOG\.md" | grep -v "\.git"; then
+            echo "FAIL: Stale v0.1.0 references found (see above, excluding CHANGELOG)"
+            exit 1
+          fi
+          echo "PASS: No stale v0.1.0 references"
+
+      - name: Validate action.yml
+        run: |
+          if grep -q "hive-mind-council" action.yml && [ -f "skills/hive-mind-council/SKILL.md" ]; then
+            echo "PASS: action.yml references valid skill path"
+          else
+            echo "FAIL: action.yml validation"
+            exit 1
+          fi
+
+      - name: Confirm hive-ad isolation
+        run: |
+          if [ -f "hive-ad/package.json" ] && [ -f "package.json" ]; then
+            hive_deps=$(node -e "const p=require('./hive-ad/package.json'); console.log(Object.keys(p.dependencies||{}).join(','))")
+            root_deps=$(node -e "const p=require('./package.json'); console.log(Object.keys(p.dependencies||{}).join(','))")
+            echo "hive-ad deps: $hive_deps"
+            echo "root deps: $root_deps (should be empty)"
+            if [ -n "$root_deps" ]; then
+              echo "FAIL: Root package should not have runtime dependencies"
+              exit 1
+            fi
+            echo "PASS: Dependency isolation verified"
+          else
+            echo "FAIL: Required package.json files missing"
+            exit 1
+          fi

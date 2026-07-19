@@ -1,25 +1,32 @@
 # Final Report
 
-If completed:
-```
-The Hive Skill completed the task.
-Goal: ...
-What changed: ...
-Files changed: ...
-Validation: ...
-Known issues: ...
-Token efficiency: Context kept compact, Reused findings, Avoided unrelated files.
-Suggested commit: ...
-Queen Final Decision: Complete.
+The final report follows the HIVE Review format defined in [final-review.yaml](final-review.yaml).
+
+## Completed
+
+```markdown
+## HIVE Review — Complete
+
+**Goal:** <goal>
+**Execution mode:** <preset>
+**Fix cycles used:** <count>
+**Result:** <summary>
+**Changes:** <list>
+**Verification:** <evidence references>
+**Limitations:** <known limitations>
+**Files affected:** <file list>
+**Final status:** Complete
 ```
 
-If blocked:
-```
-The Hive Skill stopped before completion.
-Goal: ...
-Completed: ...
-Blocked by: ...
-What remains: ...
-Next exact action: ...
-Queen Final Decision: Blocked, user action required.
+## Blocked or Failed
+
+```markdown
+## HIVE Review — <Blocked | Failed>
+
+**Goal:** <goal>
+**Completed:** <what was done>
+**Remaining:** <what remains>
+**Blocker:** <exact blocker>
+**Next action:** <concrete next step>
+**Final status:** <Blocked | Failed>
 ```

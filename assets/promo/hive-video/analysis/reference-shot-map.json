@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "analysis_date": "2026-07-15",
+  "source": {
+    "canonical_url": "https://www.youtube.com/watch?v=jX4dLxiso6A",
+    "video_id": "jX4dLxiso6A",
+    "title": "Video Ad for AI / SaaS Product | Doks.AI",
+    "channel": "Zelios - Animated Video Production",
+    "upload_date": "2024-06-20",
+    "producer_context_url": "https://zelios.agency/brand-awareness-video/",
+    "access_status": "reachable",
+    "captions": "none",
+    "narration": "none"
+  },
+  "media": {
+    "container_duration_seconds": 20.114,
+    "video_duration_seconds": 20.066667,
+    "audio_duration_seconds": 20.114,
+    "width": 1920,
+    "height": 1080,
+    "display_aspect_ratio": "16:9",
+    "fps": 30,
+    "video_frame_count": 602,
+    "video_codec": "AV1 Main",
+    "pixel_format": "yuv420p",
+    "color_space": "BT.709",
+    "audio_codec": "Opus",
+    "audio_sample_rate_hz": 48000,
+    "audio_channels": 2,
+    "integrated_loudness_lufs": -15.9,
+    "loudness_range_lu": 1.5,
+    "true_peak_dbfs": -3.8,
+    "closing_silence": {
+      "start_seconds": 18.757979,
+      "end_seconds": 20.114,
+      "duration_seconds": 1.356021,
+      "threshold_db": -40
+    }
+  },
+  "style": {
+    "format": "fully animated 2D SaaS product ad",
+    "palette": [
+      "near-black navy",
+      "neon green",
+      "aqua",
+      "soft teal glow",
+      "white"
+    ],
+    "typography": "bold geometric sans for reveals; compact neutral sans for UI",
+    "camera_language": [
+      "macro push-in",
+      "shallow 3D perspective",
+      "parallax card stacks",
+      "centered brand holds"
+    ],
+    "motion_language": [
+      "eased vertical entrances",
+      "rounded-panel morphs",
+      "light trails",
+      "perspective rotation",
+      "kinetic phrase assembly"
+    ],
+    "audio_language": "original techno/electronic music with synchronized UI and transition accents; no voice"
+  },
+  "detected_motion_change_seconds": [
+    1.2,
+    1.233333,
+    3.3,
+    4.566667,
+    4.6,
+    5.4,
+    7.4,
+    9.066667,
+    11.533333,
+    11.566667,
+    17.666667
+  ],
+  "shots": [
+    {
+      "id": "S01",
+      "start_seconds": 0.0,
+      "end_seconds": 1.2,
+      "duration_seconds": 1.2,
+      "role": "category hook",
+      "visual": "Small brand identifier and large product category over dark navy with luminous green arcs; the first product surface rises from below.",
+      "copy_function": "name the category immediately",
+      "motion": "fast type reveal, slow background drift, vertical UI entrance",
+      "transition_out": "high-contrast UI expansion",
+      "hive_transfer": "Reveal HIVE plus a one-line category statement while a real CLI pane rises into frame."
+    },
+    {
+      "id": "S02",
+      "start_seconds": 1.2,
+      "end_seconds": 3.3,
+      "duration_seconds": 2.1,
+      "role": "product universe",
+      "visual": "A search control anchors a stack of assistant cards with shallow perspective, lime highlights, and floating accent shapes.",
+      "copy_function": "show several product surfaces without explanation",
+      "motion": "cards enter in staggered layers; subtle parallax and glow pulses",
+      "transition_out": "camera locks onto the primary action",
+      "hive_transfer": "Stack distinct HIVE agent cards around one command surface, using original honeycomb accents."
+    },
+    {
+      "id": "S03",
+      "start_seconds": 3.3,
+      "end_seconds": 4.566667,
+      "duration_seconds": 1.266667,
+      "role": "primary-action macro",
+      "visual": "The frame pushes tightly into the main AI action pill while parallel light tracks reinforce direction.",
+      "copy_function": "make the next action unmistakable",
+      "motion": "rapid zoom, button pulse, horizontal trail sweep",
+      "transition_out": "button glow becomes a full panel",
+      "hive_transfer": "Push into a HIVE CLI invocation or delegate action, keeping the typed command fully legible."
+    },
+    {
+      "id": "S04",
+      "start_seconds": 4.566667,
+      "end_seconds": 5.4,
+      "duration_seconds": 0.833333,
+      "role": "shape bridge",
+      "visual": "A bright rounded rectangle expands on a quiet grid field and resolves into the next interface state.",
+      "copy_function": "bridge action to proof",
+      "motion": "luminous scale-up and container morph",
+      "transition_out": "panel resolves into chat fields",
+      "hive_transfer": "Morph the command confirmation into an agent-work pane using HIVE geometry."
+    },
+    {
+      "id": "S05",
+      "start_seconds": 5.4,
+      "end_seconds": 7.4,
+      "duration_seconds": 2.0,
+      "role": "proof of work",
+      "visual": "A concise developer request appears, followed by a structured generated response inside a minimal chat layout.",
+      "copy_function": "demonstrate one concrete product outcome",
+      "motion": "question settles, response indicator advances, answer rows reveal",
+      "transition_out": "hard cut on the completed answer",
+      "hive_transfer": "Show request, delegation, verification, and result; never fake output that HIVE cannot produce."
+    },
+    {
+      "id": "S06",
+      "start_seconds": 7.4,
+      "end_seconds": 9.066667,
+      "duration_seconds": 1.666667,
+      "role": "presentation flexibility",
+      "visual": "Angled interface panels compare two chatbot presentation modes with floating labels.",
+      "copy_function": "show adaptability in one glance",
+      "motion": "card rotation, lateral camera drift, staggered label change",
+      "transition_out": "clean cut to a centered ecosystem layout",
+      "hive_transfer": "Compare two agent arrangements or CLI output modes with original HIVE UI."
+    },
+    {
+      "id": "S07",
+      "start_seconds": 9.066667,
+      "end_seconds": 12.5,
+      "duration_seconds": 3.433333,
+      "role": "ecosystem proof",
+      "visual": "A source-integration grid appears centered, grows toward camera, then tilts to reveal additional supported systems.",
+      "copy_function": "signal broad connectivity",
+      "motion": "grid build, dolly-in, perspective tilt, icon emphasis",
+      "transition_out": "icons collapse into a small brand glyph",
+      "hive_transfer": "Use only verified HIVE adapters or generic repository/tool symbols; do not copy the source icon arrangement."
+    },
+    {
+      "id": "S08",
+      "start_seconds": 12.5,
+      "end_seconds": 13.3,
+      "duration_seconds": 0.8,
+      "role": "brand-glyph bridge",
+      "visual": "A luminous green glass-like object contracts against an almost empty navy field.",
+      "copy_function": "reset visual density before the promise",
+      "motion": "centered scale-down and shape rotation",
+      "transition_out": "glyph becomes an inline typographic element",
+      "hive_transfer": "Substitute an original honeycomb cell or network node; avoid the reference glyph's silhouette and material treatment."
+    },
+    {
+      "id": "S09",
+      "start_seconds": 13.3,
+      "end_seconds": 17.666667,
+      "duration_seconds": 4.366667,
+      "role": "kinetic brand promise",
+      "visual": "A centered closing proposition assembles in short phrase groups around the moving glyph, then resolves with the product name.",
+      "copy_function": "turn product proof into a memorable promise",
+      "motion": "phrase-by-phrase reveal, glyph travel, restrained scale changes",
+      "transition_out": "hard brand-card reveal",
+      "hive_transfer": "Build a new HIVE promise from short original phrases; keep the screen sparse and the honeycomb node in motion."
+    },
+    {
+      "id": "S10",
+      "start_seconds": 17.666667,
+      "end_seconds": 20.114,
+      "duration_seconds": 2.447333,
+      "role": "end card",
+      "visual": "Centered logo and short action prompt over the returning luminous arcs.",
+      "copy_function": "brand recall and next step",
+      "motion": "quick logo settle followed by a nearly static hold",
+      "audio": "music decays below -40 dB at 18.758 seconds; final 1.356 seconds are effectively silent",
+      "hive_transfer": "End on the HIVE mark, install or documentation command, and a stable two-second readability hold."
+    }
+  ],
+  "clean_room_constraints": [
+    "Do not ship or redistribute the downloaded reference video or its audio.",
+    "Keep the timestamped contact sheet internal to analysis and out of campaign exports.",
+    "Do not reproduce the Doks.ai logo, copy, interface artwork, integration grid, brand glyph, or exact transition choreography.",
+    "Use HIVE-owned screenshots, verified product claims, original illustrations, original music, and original sound effects.",
+    "Treat durations and narrative roles as pacing references, not frame-for-frame instructions."
+  ],
+  "analysis_artifacts": {
+    "contact_sheet": "reference-contact-sheet.jpg",
+    "contact_sheet_sampling_interval_seconds": 0.5,
+    "contact_sheet_sample_count": 40,
+    "reference_footage_included_in_public_deliverables": false
+  }
+}

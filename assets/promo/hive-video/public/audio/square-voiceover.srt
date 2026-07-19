@@ -1,0 +1,20 @@
+1
+00:00:00,050 --> 00:00:02,215
+Code generation is only the start.
+
+2
+00:00:02,215 --> 00:00:10,193
+HIVE coordinates one Queen and specialized agents through inspection, planning, building, testing, review, repair, and reporting.
+
+3
+00:00:10,193 --> 00:00:17,920
+Current evidence includes a passing HIVE TypeScript check, 165 passing Pledgr tests, and 40 passing TraderBot tests.
+
+4
+00:00:17,920 --> 00:00:20,340
+Results and limitations stay visible.
+
+5
+00:00:20,340 --> 00:00:25,159
+Explore HIVE at github dot com slash yuzuruu twenty-nine slash the-hive-skill.
+
