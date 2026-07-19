@@ -1,13 +1,14 @@
 {
   "private": true,
-  "description": "The Hive Skill - multi-agent orchestration protocol",
+  "description": "Portable six-role council protocol for agentic coding hosts.",
   "scripts": {
-    "test": "node tests/run-all.js",
+    "test": "node tests/run-all.js && node tests/conformance/run-conformance.js && node tests/link-validator-regression.test.js",
     "test:contracts": "node tests/contracts/handoff-schema.test.js",
     "test:templates": "node tests/contracts/yaml-templates.test.js",
     "test:presets": "node tests/scenarios/preset-selection.test.js",
     "test:safety": "node tests/scenarios/safety-validation.test.js",
     "test:ci": "node tests/run-ci.js",
+    "test:conformance": "node tests/conformance/run-conformance.js",
     "validate:json": "node -e \"const fs=require('fs');require('path');['package.json','skill.json','plugin.json'].forEach(f=>{try{JSON.parse(fs.readFileSync(f,'utf8'));console.log('OK: '+f)}catch(e){console.error('FAIL: '+f);process.exit(1)}})\"",
     "validate:links": "node tests/validate-links.js"
   }

@@ -1,4 +1,4 @@
-// The Hive Skill v0.2.0 — Validation Test Runner
+// The Hive Skill v0.2.1 — Validation Test Runner
 // Runs all contract, scenario, and safety tests
 // No external dependencies required
 

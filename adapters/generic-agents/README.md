@@ -1,6 +1,19 @@
 # Generic Agents Adapter for The Hive Skill
 
+> This adapter documents how the host runtime maps to the HIVE protocol.
+> It is not an executable orchestration engine.
+
 Maps the HIVE council protocol to generic AI agent runtimes.
+
+## Capability Profile
+
+| Aspect | Behavior |
+|--------|----------|
+| **Subagent model** | Role simulation (no native subagent spawning) |
+| **Execution model** | Fully sequential |
+| **Structured output** | Markdown-based; falls back to plain text when structured tools unavailable |
+| **Approval enforcement** | Host-enforced where available; reports to user as fallback |
+| **Unavailable capabilities** | Subagent spawning, parallel execution, native structured output, execution-based validation |
 
 ## Capability Detection
 

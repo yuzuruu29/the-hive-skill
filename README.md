@@ -1,16 +1,18 @@
 # The Hive Skill
 
-The Hive Skill is an open-source multi-agent orchestration skill for agentic coders. It turns one AI coding agent into a structured six-role council: Queen, Scout, Architect, Forger, Sentinel, and Scribe.
+The Hive Skill is a portable six-role council protocol for agentic coding hosts. It provides structured handoffs, evidence rules, safety boundaries, orchestration presets, bounded repair cycles, and explicit stop conditions for Claude Code, Codex, OpenCode, and generic agents.
 
 The Hive Skill is built to be invoked once and trusted to continue until the task is completed, validated, or blocked by a clear stop condition.
 
-v0.2.0 provides a disciplined orchestration protocol with structured handoffs, evidence requirements, bounded repair cycles, and explicit stop conditions. Real multi-model execution depends on the runtime.
+v0.2.1 provides a disciplined orchestration protocol with structured handoffs, evidence requirements, bounded repair cycles, and explicit stop conditions. Real multi-model execution depends on the runtime.
+
+> **Read first:** [What this is and is not](WHAT_THIS_IS.md) explains the boundary between the portable skill and the full HIVE runtime.
 
 ## Demo
 
 ![The Hive Skill demo](assets/demo/the-hive-skill-demo.gif)
 
-The Hive Skill turns one AI coding agent into a six-role autonomous dev council: Queen, Scout, Architect, Forger, Sentinel, and Scribe.
+The Hive Skill instructs one host coding agent to operate through a six-role council.
 
 ## Supported Runtimes
 - OpenCode / OpenCode Go
@@ -84,14 +86,15 @@ Then retry the installation command.
 
 Public users should use the HTTPS installation command instead of configuring SSH unless they specifically need SSH.
 
-## Autonomous by Default
+## Protocol Autonomy
 
-The Hive Skill is designed to run as an autonomous loop.
-You do not need to manually ask it to plan, code, validate, and summarize. Invoke the skill once, give it the goal, and it will continue through the council loop until the goal is completed, validated, or blocked by a clear stop condition.
+Once invoked, The Hive Skill instructs the host agent to continue the council workflow until the goal is completed, partially completed, blocked, or failed.
+
+The host runtime executes every role step. Real subagents, parallelism, model separation, and tool isolation depend on that runtime.
 
 Example:
 Use The Hive Skill to fix the failing login flow.
-The skill will automatically:
+The protocol directs the host agent to:
 1. Inspect relevant files.
 2. Find the likely cause.
 3. Plan the smallest safe fix.
@@ -125,7 +128,7 @@ This makes it practical for long coding sessions and agentic tools with limited 
 | **Scribe** | Synchronizes documentation, generates HIVE Review, prepares release evidence | [Scribe.md](skills/hive-mind-council/agents/Scribe.md) |
 
 ## Release Status
-Current version: v0.2.0
+Current version: v0.2.1
 
 ## License
 Licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.

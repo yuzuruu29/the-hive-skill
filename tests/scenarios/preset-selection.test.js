@@ -1,4 +1,4 @@
-// Preset Selection Scenario Test
+// The Hive Skill v0.2.1 — Preset Selection Scenario Test
 // Validates that orchestration presets are correctly documented
 // No external dependencies required
 

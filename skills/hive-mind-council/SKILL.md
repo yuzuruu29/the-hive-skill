@@ -3,9 +3,20 @@ name: hive-mind-council
 description: Disciplined multi-agent orchestration protocol. Turns one AI agent into a six-role council (Queen, Scout, Architect, Forger, Sentinel, Scribe) with structured handoffs, evidence requirements, bounded repair cycles, and explicit stop conditions.
 ---
 
-# Hive Mind Council v0.2.0
+# Hive Mind Council v0.2.1
 
 A disciplined, portable orchestration protocol that reliably plans, investigates, implements, validates, repairs, and documents software tasks using a six-role council. Works across Claude Code, Codex, OpenCode, and generic agent runtimes without depending on proprietary orchestration APIs.
+
+## Non-Goals
+
+This skill does not:
+
+- Replace the host runtime's permission system
+- Provide durable memory across independent runtime sessions
+- Guarantee parallel or multi-model execution
+- Create isolated worktrees by itself
+- Route requests across model providers
+- Ship the HIVE desktop, CLI, or TUI runtime
 
 ## When to Use This Skill
 
@@ -56,9 +67,9 @@ The Queen selects a preset based on task classification:
 
 The Queen may downgrade unnecessary roles but must not remove Sentinel from implementation tasks.
 
-## Default Invocation
+## Default Invocation (Protocol Behavior)
 
-When this skill is invoked, the following behavior runs automatically:
+When this skill guides the host agent, the agent follows this protocol:
 
 1. **Queen** establishes the run contract with measurable success criteria.
 2. **Queen** classifies the task and selects the appropriate preset.

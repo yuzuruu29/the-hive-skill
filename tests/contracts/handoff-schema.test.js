@@ -1,4 +1,4 @@
-// Handoff Schema Contract Test
+// The Hive Skill v0.2.1 — Handoff Schema Contract Test
 // Validates that all role files use consistent handoff terminology
 // No external dependencies required
 
@@ -194,35 +194,193 @@ check('Scribe has documentation synchronization', /Documentation synchronization
 console.log('\n--- Version Consistency ---');
 const skillJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'skill.json'), 'utf8'));
 const pluginJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'plugin.json'), 'utf8'));
-check('skill.json version is 0.2.0', skillJson.version === '0.2.0');
-check('plugin.json version is 0.2.0', pluginJson.version === '0.2.0');
-check('README mentions v0.2.0', /v0\.2\.0/.test(fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8')));
-check('CHANGELOG has 0.2.0 section', /\[0\.2\.0\]/.test(fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')));
+	check('skill.json version is 0.2.1', skillJson.version === '0.2.1');
+	check('plugin.json version is 0.2.1', pluginJson.version === '0.2.1');
+	check('README mentions v0.2.1', /v0\.2\.1/.test(fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8')));
+	check('CHANGELOG has 0.2.0 section', /\[0\.2\.0\]/.test(fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')));
+	check('CHANGELOG has 0.2.1 section', /\[0\.2\.1\]/.test(fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')));
 
-// 14. Validate no stale v0.1.0 references in active docs
-console.log('\n--- Stale Version Check ---');
-const activeDocs = [
-  'README.md', 'SKILL.md',
-  'adapters/claude-code/README.md', 'adapters/claude-code/install.md',
-  'adapters/codex/README.md', 'adapters/codex/AGENTS.md', 'adapters/codex/plugin.md',
-  'adapters/opencode/README.md', 'adapters/opencode/install.md',
-  'adapters/generic-agents/README.md', 'adapters/generic-agents/AGENTS.md'
-];
-let staleFound = false;
-for (const doc of activeDocs) {
-  const content = readFile(path.join(ROOT, doc));
-  if (content && /v0\.1\.0/.test(content)) {
-    console.error(`FAIL: ${doc} still contains v0.1.0 reference`);
-    staleFound = true;
-    allPassed = false;
-  }
-}
-if (!staleFound) {
-  console.log('PASS: No stale v0.1.0 references in active documentation');
-  passedChecks++;
-}
-totalChecks++;
+	// 14. Validate no stale v0.1.0 references in active docs
+	console.log('\n--- Stale Version Check ---');
+	const activeDocs = [
+	  'README.md', 'SKILL.md',
+	  'adapters/claude-code/README.md', 'adapters/claude-code/install.md',
+	  'adapters/codex/README.md', 'adapters/codex/AGENTS.md', 'adapters/codex/plugin.md',
+	  'adapters/opencode/README.md', 'adapters/opencode/install.md',
+	  'adapters/generic-agents/README.md', 'adapters/generic-agents/AGENTS.md'
+	];
+	let staleFound = false;
+	for (const doc of activeDocs) {
+	  const content = readFile(path.join(ROOT, doc));
+	  if (content && /v0\.1\.0/.test(content)) {
+	    console.error(`FAIL: ${doc} still contains v0.1.0 reference`);
+	    staleFound = true;
+	    allPassed = false;
+	  }
+	}
+	if (!staleFound) {
+	  console.log('PASS: No stale v0.1.0 references in active documentation');
+	  passedChecks++;
+	}
+	totalChecks++;
 
-// Summary
-console.log(`\n=== Results: ${passedChecks}/${totalChecks} passed ===\n`);
-process.exit(allPassed ? 0 : 1);
+	// ===== Phase 6: Anti-Overclaim Contract Tests =====
+
+	// 15. Product Boundary Checks
+	console.log('\n--- Product Boundary Checks ---');
+	const whatThisIsPath = path.join(ROOT, 'WHAT_THIS_IS.md');
+	const whatThisIsExists = fs.existsSync(whatThisIsPath);
+	check('WHAT_THIS_IS.md exists', whatThisIsExists);
+
+	const readmeContent = readFile(path.join(ROOT, 'README.md'));
+	if (readmeContent) {
+	  check('README.md links to WHAT_THIS_IS.md', /WHAT_THIS_IS\.md/.test(readmeContent));
+	} else {
+	  check('README.md links to WHAT_THIS_IS.md', false);
+	}
+
+	if (whatThisIsExists) {
+	  const whatThisIsContent = fs.readFileSync(whatThisIsPath, 'utf8');
+	  check('WHAT_THIS_IS.md calls the project a "protocol"', /\bprotocol\b/i.test(whatThisIsContent));
+	  check('WHAT_THIS_IS.md says it is "not" a standalone runtime', /not[\s\S]{0,100}(standalone|runtime)/i.test(whatThisIsContent) || /(standalone|runtime)[\s\S]{0,100}not/i.test(whatThisIsContent));
+	} else {
+	  check('WHAT_THIS_IS.md calls the project a "protocol"', false);
+	  check('WHAT_THIS_IS.md says it is "not" a standalone runtime', false);
+	}
+
+	// 16. Non-Goals Check
+	console.log('\n--- Non-Goals Check ---');
+	const skillContentText = readFile(path.join(SKILL_DIR, 'SKILL.md'));
+	if (skillContentText) {
+	  check('SKILL.md contains a "## Non-Goals" section', /##\s*Non-Goals/.test(skillContentText));
+	} else {
+	  check('SKILL.md contains a "## Non-Goals" section', false);
+	}
+
+	// 17. Adapter Disclosure Checks
+	console.log('\n--- Adapter Disclosure Checks ---');
+	const adapterReadmes = [
+	  'claude-code/README.md',
+	  'codex/README.md',
+	  'opencode/README.md',
+	  'generic-agents/README.md'
+	];
+	const disclosurePhrase = 'This adapter documents how the host runtime maps to the HIVE protocol';
+	for (const relPath of adapterReadmes) {
+	  const adapterContent = readFile(path.join(adapterDir, relPath));
+	  if (adapterContent) {
+	    check(`adapters/${relPath} contains protocol mapping disclosure`, adapterContent.includes(disclosurePhrase));
+	  } else {
+	    check(`adapters/${relPath} contains protocol mapping disclosure`, false);
+	  }
+	}
+
+	// 18. Description Checks
+	console.log('\n--- Description Checks ---');
+	check('skill.json description uses protocol-oriented wording', /\bprotocol\b/i.test(skillJson.description));
+	check('plugin.json description uses protocol-oriented wording', /\bprotocol\b/i.test(pluginJson.description));
+
+	// 19. Banned Active Claims
+	console.log('\n--- Banned Active Claims ---');
+
+	const OVERCLAIMS = [
+	  'guarantees multi-model execution',
+	  'independent background daemon',
+	  'works independently of the host runtime',
+	  'six independent autonomous agents',
+	  'guaranteed secure',
+	  'production-ready without validation'
+	];
+
+	const scanFiles = [
+	  'README.md',
+	  'skills/hive-mind-council/SKILL.md',
+	  'skill.json',
+	  'plugin.json',
+	  'package.json',
+	  'adapters/claude-code/README.md',
+	  'adapters/codex/README.md',
+	  'adapters/opencode/README.md',
+	  'adapters/generic-agents/README.md',
+	  'marketplace/claude-plugin/README.md',
+	  'marketplace/codex-plugin/README.md',
+	  'marketplace/github-action/README.md',
+	  'marketplace/claude-plugin/plugin.json',
+	  'marketplace/codex-plugin/plugin.json'
+	];
+
+	/**
+	 * Check whether a banned phrase appears in a non-negated context.
+	 * Returns true if the phrase is absent, or present only inside negation.
+	 */
+	function phraseIsAcceptable(content, phrase) {
+	  const idx = content.indexOf(phrase);
+	  if (idx === -1) return true; // phrase not found — acceptable
+
+	  // Look backward from the phrase to detect negation words
+	  const lookback = 100;
+	  const start = Math.max(0, idx - lookback);
+	  const preceding = content.substring(start, idx);
+
+	  // Negation patterns: the phrase should appear after a negation keyword
+	  const negationPattern = /\b(does not|do not|is not|are not|was not|were not|will not|shall not|should not|cannot|can not|isn't|aren't|doesn't|don't|could not|would not|not)\b\s*$/i;
+
+	  const match = preceding.match(negationPattern);
+	  if (match) {
+	    // Ensure "not" is a true negation, not a false positive like "notable"
+	    const negationWord = match[1] || match[0];
+	    if (/^not$/i.test(negationWord)) {
+	      // For standalone "not", ensure it's used as a negation word, not part of another word
+	      // Check the character before "not" is a non-word char or start
+	      const notIdx = preceding.toLowerCase().lastIndexOf('not ');
+	      const notEndIdx = preceding.toLowerCase().lastIndexOf('not');
+	      if (notEndIdx >= 0) {
+	        const charBefore = notEndIdx > 0 ? preceding[notEndIdx - 1] : ' ';
+	        if (/\w/.test(charBefore)) {
+	          // "not" is part of another word like "notable" — not a negation
+	          return false;
+	        }
+	        return true;
+	      }
+	      return true;
+	    }
+	    return true; // negation found — acceptable
+	  }
+
+	  return false; // non-negated phrase found — NOT acceptable
+	}
+
+	let overclaimFailures = 0;
+	for (const relPath of scanFiles) {
+	  const fileContent = readFile(path.join(ROOT, relPath));
+	  if (!fileContent) continue;
+
+	  for (const phrase of OVERCLAIMS) {
+	    const acceptable = phraseIsAcceptable(fileContent, phrase);
+	    const label = `No "${phrase}" in ${relPath}`;
+	    if (!acceptable) {
+	      console.error(`FAIL: ${label} — phrase found in active (non-negated) context`);
+	      overclaimFailures++;
+	      allPassed = false;
+	    } else {
+	      // Only log PASS if the phrase was actually checked (exists but negated, or doesn't exist)
+	      const idx = fileContent.indexOf(phrase);
+	      if (idx !== -1) {
+	        console.log(`PASS: ${label} (found only in negated context)`);
+	      } else {
+	        // Silent pass for phrases not present at all — avoid noise
+	      }
+	    }
+	    totalChecks++;
+	  }
+	}
+	if (overclaimFailures === 0) {
+	  console.log('PASS: No banned overclaim phrases found in active (non-negated) context');
+	  passedChecks += scanFiles.length * OVERCLAIMS.length - overclaimFailures;
+	} else {
+	  passedChecks += (scanFiles.length * OVERCLAIMS.length) - overclaimFailures;
+	}
+
+	// Summary
+	console.log(`\n=== Results: ${passedChecks}/${totalChecks} passed ===\n`);
+	process.exit(allPassed ? 0 : 1);

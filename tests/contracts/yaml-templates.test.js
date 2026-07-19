@@ -1,4 +1,4 @@
-// YAML Template Contract Test
+// The Hive Skill v0.2.1 — YAML Template Contract Test
 // Validates YAML templates have correct structure and required fields
 // No external dependencies required - uses regex-based validation
 

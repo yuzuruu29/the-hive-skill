@@ -1,6 +1,19 @@
 # OpenCode Adapter for The Hive Skill
 
+> This adapter documents how the host runtime maps to the HIVE protocol.
+> It is not an executable orchestration engine.
+
 Maps the HIVE council protocol to OpenCode's native capabilities.
+
+## Capability Profile
+
+| Aspect | Behavior |
+|--------|----------|
+| **Subagent model** | Real subagents via OpenCode's Task tool |
+| **Execution model** | Sequential by default; parallel when roles have non-overlapping file scopes |
+| **Structured output** | Markdown-based (handoff schema rendered as Markdown) |
+| **Approval enforcement** | Host-enforced via OpenCode's native approval prompts |
+| **Unavailable capabilities** | None — all protocol capabilities supported |
 
 ## Capability Detection
 

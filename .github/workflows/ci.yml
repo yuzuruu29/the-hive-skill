@@ -25,30 +25,7 @@ jobs:
           done
 
       - name: Validate all Markdown links
-        run: |
-          echo "Checking markdown files exist..."
-          errors=0
-          for f in $(find . -name '*.md' -not -path './hive-ad/*' -not -path './assets/promo/*' -not -path '*/node_modules/*'); do
-            dir=$(dirname "$f")
-            # Extract relative links [text](path) — skip absolute URLs, fragments, mailto
-            for link in $(grep -oP '\[([^\]]+)\]\(([^)]+)\)' "$f" | grep -oP '\([^)]+\)' | tr -d '()'); do
-              case "$link" in
-                http*|mailto:*|'#'*|'./'*) ;;
-                *)
-                  target="$dir/$link"
-                  if [ ! -f "$target" ] && [ ! -d "$target" ]; then
-                    echo "  BROKEN: $f -> $link (target: $target)"
-                    errors=$((errors+1))
-                  fi
-                  ;;
-              esac
-            done
-          done
-          if [ "$errors" -gt 0 ]; then
-            echo "FAIL: $errors broken link(s) found"
-            exit 1
-          fi
-          echo "PASS: All links valid"
+        run: node tests/validate-links.js
 
       - name: Run contract and scenario tests
         run: |
@@ -56,6 +33,12 @@ jobs:
           node tests/contracts/yaml-templates.test.js
           node tests/scenarios/preset-selection.test.js
           node tests/scenarios/safety-validation.test.js
+
+      - name: Run conformance tests
+        run: node tests/conformance/run-conformance.js
+
+      - name: Run link validator regression test
+        run: node tests/link-validator-regression.test.js
 
       - name: Confirm no stale v0.1.0 references
         run: |
@@ -74,19 +57,23 @@ jobs:
             exit 1
           fi
 
-      - name: Confirm hive-ad isolation
+      - name: Thin-package validation
         run: |
-          if [ -f "hive-ad/package.json" ] && [ -f "package.json" ]; then
-            hive_deps=$(node -e "const p=require('./hive-ad/package.json'); console.log(Object.keys(p.dependencies||{}).join(','))")
-            root_deps=$(node -e "const p=require('./package.json'); console.log(Object.keys(p.dependencies||{}).join(','))")
-            echo "hive-ad deps: $hive_deps"
-            echo "root deps: $root_deps (should be empty)"
-            if [ -n "$root_deps" ]; then
-              echo "FAIL: Root package should not have runtime dependencies"
-              exit 1
-            fi
-            echo "PASS: Dependency isolation verified"
-          else
-            echo "FAIL: Required package.json files missing"
-            exit 1
-          fi
+          node - <<'NODE'
+          const fs = require('fs');
+
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const deps = Object.keys(pkg.dependencies || {});
+
+          if (deps.length > 0) {
+            console.error(`Root runtime dependencies are not allowed: ${deps.join(', ')}`);
+            process.exit(1);
+          }
+
+          if (fs.existsSync('hive-ad')) {
+            console.error('hive-ad must not be part of the skill package.');
+            process.exit(1);
+          }
+
+          console.log('Thin package validation passed.');
+          NODE

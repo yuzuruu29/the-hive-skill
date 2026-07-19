@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] — Public-Readiness Hardening
+
+### Added
+
+- Product boundary document explaining the skill versus runtime distinction
+- JSON-based protocol-conformance suite
+- Reproducible OpenCode smoke-test documentation
+- Anti-overclaim contract checks
+- Thin-package CI validation
+
+### Changed
+
+- Public descriptions now identify the project as a portable council protocol
+- Adapter documentation now explains host-runtime dependencies
+- Repository assets are limited to installable skill code and lightweight branding
+- Runtime smoke tests are separated from offline CI validation
+
+### Removed
+
+- Remotion promotional production project from the installable skill repository
+- Large or generated promotional production artifacts
+
+### Fixed
+
+- Wording that could imply standalone runtime enforcement
+- Ambiguous autonomy and multi-agent execution claims
+
 ## [0.2.0] — Capability Enhancement
 
 ### Added
@@ -36,3 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] — Initial Release
 - Empty initial release.
+
+[0.2.1]: https://github.com/yuzuruu29/the-hive-skill/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/yuzuruu29/the-hive-skill/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/yuzuruu29/the-hive-skill/releases/tag/v0.1.0

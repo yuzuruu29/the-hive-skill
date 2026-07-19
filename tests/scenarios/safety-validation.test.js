@@ -1,4 +1,4 @@
-// Safety Validation Scenario Tests
+// The Hive Skill v0.2.1 — Safety Validation Scenario Tests
 // Validates safety policy coverage across all files
 // No external dependencies required
 

@@ -1,6 +1,19 @@
 # Codex Adapter for The Hive Skill
 
+> This adapter documents how the host runtime maps to the HIVE protocol.
+> It is not an executable orchestration engine.
+
 Maps the HIVE council protocol to Codex's capabilities.
+
+## Capability Profile
+
+| Aspect | Behavior |
+|--------|----------|
+| **Subagent model** | Real subagents via Codex's Task tool |
+| **Execution model** | Fully sequential (no native parallel subagent support) |
+| **Structured output** | Markdown-based (handoff schema rendered as Markdown) |
+| **Approval enforcement** | Host-enforced via Codex's native approval prompts |
+| **Unavailable capabilities** | True parallel subagent execution |
 
 ## Capability Detection
 

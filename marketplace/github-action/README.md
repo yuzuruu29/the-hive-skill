@@ -9,7 +9,7 @@ jobs:
   install-skill:
     runs-on: ubuntu-latest
     steps:
-      - uses: yuzuruu29/the-hive-skill@v0.2.0
+      - uses: yuzuruu29/the-hive-skill@v0.2.1
 ```
 
 ## Inputs
