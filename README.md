@@ -4,7 +4,7 @@ The Hive Skill is a portable six-role council protocol for agentic coding hosts.
 
 The Hive Skill is built to be invoked once and trusted to continue until the task is completed, validated, or blocked by a clear stop condition.
 
-v0.2.1 provides a disciplined orchestration protocol with structured handoffs, evidence requirements, bounded repair cycles, and explicit stop conditions. Real multi-model execution depends on the runtime.
+v0.3.0 provides a disciplined orchestration protocol with structured handoffs, evidence requirements, bounded repair cycles, and explicit stop conditions. Real multi-model execution depends on the runtime.
 
 > **Read first:** [What this is and is not](WHAT_THIS_IS.md) explains the boundary between the portable skill and the full HIVE runtime.
 
@@ -128,7 +128,7 @@ This makes it practical for long coding sessions and agentic tools with limited 
 | **Scribe** | Synchronizes documentation, generates HIVE Review, prepares release evidence | [Scribe.md](skills/hive-mind-council/agents/Scribe.md) |
 
 ## Release Status
-Current version: v0.2.1
+Current version: v0.3.0
 
 ## License
 Licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.

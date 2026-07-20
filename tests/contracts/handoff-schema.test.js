@@ -194,11 +194,11 @@ check('Scribe has documentation synchronization', /Documentation synchronization
 console.log('\n--- Version Consistency ---');
 const skillJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'skill.json'), 'utf8'));
 const pluginJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'plugin.json'), 'utf8'));
-	check('skill.json version is 0.2.1', skillJson.version === '0.2.1');
-	check('plugin.json version is 0.2.1', pluginJson.version === '0.2.1');
-	check('README mentions v0.2.1', /v0\.2\.1/.test(fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8')));
-	check('CHANGELOG has 0.2.0 section', /\[0\.2\.0\]/.test(fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')));
-	check('CHANGELOG has 0.2.1 section', /\[0\.2\.1\]/.test(fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')));
+	check('skill.json version is 0.3.0', skillJson.version === '0.3.0');
+		check('plugin.json version is 0.3.0', pluginJson.version === '0.3.0');
+		check('README mentions v0.3.0', /v0\.3\.0/.test(fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8')));
+		check('CHANGELOG has 0.2.1 section', /\[0\.2\.1\]/.test(fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')));
+		check('CHANGELOG has 0.3.0 section', /\[0\.3\.0\]/.test(fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')));
 
 	// 14. Validate no stale v0.1.0 references in active docs
 	console.log('\n--- Stale Version Check ---');

@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] — Machine-Readable Protocol and Adapter Conformance
+
+### Added
+
+- Versioned JSON Schemas for HIVE protocol artifacts
+- Artifact and bundle validation CLI
+- Runtime capability negotiation contract
+- Adapter conformance levels and manifests
+- Portable `.hive-run` artifact bundle format
+- Negative, semantic, and mutation tests
+- Cross-runtime live-validation methodology
+- Generated adapter conformance report
+
+### Changed
+
+- Protocol, skill, schema, and artifact versions are tracked independently
+- JSON Schemas are the canonical source for field names and enums
+- Adapters now declare supported protocol versions and tested capabilities
+- Examples and conformance fixtures are schema-validated
+
+### Compatibility
+
+- Existing Markdown workflows remain supported
+- v0.2.x artifacts can be migrated by adding protocol and run identifiers
+- Host-runtime execution and enforcement remain runtime-dependent
+
 ## [0.2.1] — Public-Readiness Hardening
 
 ### Added
@@ -64,6 +90,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] — Initial Release
 - Empty initial release.
 
+[0.3.0]: https://github.com/yuzuruu29/the-hive-skill/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/yuzuruu29/the-hive-skill/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/yuzuruu29/the-hive-skill/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/yuzuruu29/the-hive-skill/releases/tag/v0.1.0

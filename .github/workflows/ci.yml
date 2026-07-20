@@ -40,6 +40,9 @@ jobs:
       - name: Run link validator regression test
         run: node tests/link-validator-regression.test.js
 
+      - name: Run conformance report regression test
+        run: node tests/conformance-report-regression.test.js
+
       - name: Confirm no stale v0.1.0 references
         run: |
           if grep -rn "v0\.1\.0" --include="*.md" --include="*.json" . --exclude-dir=hive-ad --exclude-dir=assets/promo --exclude-dir=node_modules 2>/dev/null | grep -v "CHANGELOG\.md" | grep -v "\.git"; then
@@ -57,23 +60,68 @@ jobs:
             exit 1
           fi
 
+      - name: Validate schemas and run schema tests
+        run: node tests/schemas/run-schema-tests.js
+
+      - name: Run semantic rule tests
+        run: node tests/semantic/semantic-rules.test.js
+
+      - name: Run mutation tests
+        run: node tests/mutation/mutate-valid-artifacts.test.js
+
+      - name: Run bundle tests
+        run: node tests/bundles/run-bundle-tests.js
+
+      - name: Validate adapter manifests
+        run: |
+          node tools/hive-validate.js --adapter adapters/opencode/adapter.json
+          node tools/hive-validate.js --adapter adapters/claude-code/adapter.json
+          node tools/hive-validate.js --adapter adapters/codex/adapter.json
+          node tools/hive-validate.js --adapter adapters/generic-agents/adapter.json
+
+      - name: Validate golden run bundle
+        run: node tools/hive-validate.js --bundle tests/bundles/valid/complete-run
+
+      - name: Generate conformance report
+        run: node tools/generate-conformance-report.js
+
+      - name: Check conformance report is up to date
+        run: |
+          node tools/generate-conformance-report.js --check
+
       - name: Thin-package validation
         run: |
           node - <<'NODE'
           const fs = require('fs');
-
           const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
           const deps = Object.keys(pkg.dependencies || {});
+          const devDeps = Object.keys(pkg.devDependencies || {});
+
+          const failures = [];
 
           if (deps.length > 0) {
-            console.error(`Root runtime dependencies are not allowed: ${deps.join(', ')}`);
-            process.exit(1);
+            failures.push(`Root runtime dependencies are not allowed: ${deps.join(', ')}`);
           }
 
           if (fs.existsSync('hive-ad')) {
-            console.error('hive-ad must not be part of the skill package.');
-            process.exit(1);
+            failures.push('hive-ad must not be part of the skill package.');
           }
 
+          if (!fs.existsSync('WHAT_THIS_IS.md')) {
+            failures.push('WHAT_THIS_IS.md is missing');
+          }
+
+          if (devDeps.length > 0 && !devDeps.includes('ajv')) {
+            // Allow ajv, flag unexpected dev deps
+            const unexpected = devDeps.filter(d => d !== 'ajv');
+            if (unexpected.length > 0) {
+              failures.push(`Unexpected devDependencies: ${unexpected.join(', ')}`);
+            }
+          }
+
+          if (failures.length) {
+            console.error(failures.join('\n'));
+            process.exit(1);
+          }
           console.log('Thin package validation passed.');
           NODE

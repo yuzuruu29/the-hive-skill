@@ -3,7 +3,7 @@ name: hive-mind-council
 description: Disciplined multi-agent orchestration protocol. Turns one AI agent into a six-role council (Queen, Scout, Architect, Forger, Sentinel, Scribe) with structured handoffs, evidence requirements, bounded repair cycles, and explicit stop conditions.
 ---
 
-# Hive Mind Council v0.2.1
+# Hive Mind Council v0.3.0
 
 A disciplined, portable orchestration protocol that reliably plans, investigates, implements, validates, repairs, and documents software tasks using a six-role council. Works across Claude Code, Codex, OpenCode, and generic agent runtimes without depending on proprietary orchestration APIs.
 
